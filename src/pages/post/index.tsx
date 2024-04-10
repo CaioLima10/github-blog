@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ContainerLayout } from "../../components/containerLayout";
 import { PostHeader } from "./components/postHeader";
 import { IPosts } from "../blog";
@@ -14,7 +14,7 @@ export function Post() {
 
   const { id } = useParams();
 
-  const getPostDetails = useCallback(async () => {
+  const getPostDetails = async () => {
     try {
       const response = await api.get(
         `/repos/${username}/${repoName}/issues/${id}`
@@ -23,11 +23,11 @@ export function Post() {
     } catch (error) {
       console.log(error);
     }
-  }, [postData, id]);
+  };
 
   useEffect(() => {
     getPostDetails();
-  }, [getPostDetails]);
+  });
 
   return (
     <ContainerLayout>
