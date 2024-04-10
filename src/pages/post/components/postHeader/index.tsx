@@ -1,0 +1,50 @@
+import { FaCalendar, FaChevronLeft, FaGithub } from "react-icons/fa";
+import { ExternalLink } from "../../../../components/externalLink";
+import { FaMessage } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
+
+export function PostHeader() {
+
+  const navigate = useNavigate()
+
+  function goBack() {
+    navigate(-1)
+  }
+
+  return (
+    <div className="w-full min-h-52 bg-profile p-6 flex gap-4 shadow-lg -mt-28 rounded-md">
+      <div className="flex flex-col w-full p-6">
+        <header className="w-full flex items-center justify-between">
+          <button
+            onClick={goBack}
+            className="text-brandblue text-base uppercase flex items-center justify-center line-clamp-1
+            gap-2 font-semibold transition-all "
+          >
+            <span className="flex items-center gap-2">
+              <FaChevronLeft size={20} />
+              voltar
+            </span>
+          </button>
+          <ExternalLink text="Ver no Github" href="#" target="_blank" />
+        </header>
+        <h1 className="text-4xl text-textbase font-medium mt-10">
+          Javascript data types and data structurus
+        </h1>
+        <ul className="flex items-center gap-12 mt-6">
+          <li className="flex items-center gap-2 text-textbase text-xl">
+            <FaGithub size={24} className="text-icon" />
+            <span className="text-textdescribe">Caio lima</span>
+          </li>
+          <li className="flex items-center gap-2 text-textbase text-xl">
+            <FaCalendar size={24} className="text-icon" />
+            <span className="text-textdescribe">Há 1 dia</span>
+          </li>
+          <li className="flex items-center gap-2 text-textbase text-xl">
+            <FaMessage size={24} className="text-icon" />{" "}
+            <span className="text-textdescribe">5 comentarios</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+}

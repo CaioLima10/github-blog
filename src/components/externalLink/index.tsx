@@ -1,11 +1,12 @@
-import { ComponentProps } from "react";
+import { ComponentProps, ReactNode } from "react";
 import { FiEdit } from "react-icons/fi";
 
 type ExternalLinkProps = ComponentProps<"a"> & {
   text: string;
+  icon?: ReactNode;
 };
 
-export function ExternalLink({ text, ...rest }: ExternalLinkProps) {
+export function ExternalLink({ text, icon, ...rest }: ExternalLinkProps) {
   return (
     <a
       {...rest}
@@ -13,7 +14,7 @@ export function ExternalLink({ text, ...rest }: ExternalLinkProps) {
                   gap-2 font-semibold transition-all "
     >
       {text}
-      <FiEdit size={20} />
+      {icon ?? <FiEdit size={20} />}
     </a>
   );
 }
