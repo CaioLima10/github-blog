@@ -31,9 +31,7 @@ export function Profile() {
 
       setIsloading(true);
     } finally {
-      setTimeout(() => {
-        setIsloading(false);
-      }, 2000);
+      setIsloading(false);
     }
   };
 
