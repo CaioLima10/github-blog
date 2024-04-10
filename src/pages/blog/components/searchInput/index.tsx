@@ -23,7 +23,10 @@ export function SearchInput({ getPosts, postsLength }: SearchInputProps) {
   }
 
   return (
-    <form className="w-full" onSubmit={handleSubmit(handleSearchPosts)}>
+    <form
+      className="w-[98%] sm:w-full"
+      onSubmit={handleSubmit(handleSearchPosts)}
+    >
       <header className="w-full flex items-center justify-between mt-20">
         <h3 className="text-textbase text-2xl">Publicações</h3>
         <div className="text-textdescribe">

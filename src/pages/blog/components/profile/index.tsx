@@ -42,11 +42,15 @@ export function Profile() {
   }, []);
 
   return (
-    <div className="w-full min-h-72 bg-profile p-6 flex gap-4 shadow-lg -mt-28 rounded-md">
+    <div
+      className="w-[98%] sm:w-full min-h-72 bg-profile p-2 sm:p-12 lg:p-6 
+                    flex flex-col lg:flex-row gap-4 shadow-lg 
+                    mt-10 md:-mt-28 rounded-md"
+    >
       <img
         src={profileData.avatar_url}
         alt="FOTO-DO-GITHUB"
-        className="w-60 h-60 bg-cover rounded-xl"
+        className="w-full lg:w-60 h-80 lg:h-60 mb-6 lg:mb-0 bg-cover rounded-xl"
       />
       {isLoading ? (
         <BounceLoading />
@@ -65,7 +69,7 @@ export function Profile() {
           <p className="flex text-textdescribe text-2xl px-4 mb-10 line-clamp-3 ">
             {profileData.bio}
           </p>
-          <ul className="px-4 flex gap-8 mt-2">
+          <ul className="px-4 flex flex-col lg:flex-row gap-8 mt-2">
             <li className="flex items-center gap-2 text-textbase text-xl">
               <FaGithub size={24} className="text-icon flex gap-2" />
               <span className="text-textdescribe">{profileData.login}</span>

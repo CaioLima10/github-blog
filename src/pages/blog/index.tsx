@@ -14,6 +14,7 @@ export interface IPosts {
   created_at: string;
   number: number;
   comments: string;
+  html_url?: string;
   user: {
     login: string;
   };
@@ -28,8 +29,8 @@ export function Blog() {
         `/search/issues?q=${query}%20repo:${username}/${repoName}`
       );
       setPosts(response.data.items);
-    } catch {
-      console.log("error ao conectar com github!");
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -43,7 +44,7 @@ export function Blog() {
         <Profile />
         <SearchInput postsLength={posts.length} getPosts={getPosts} />
 
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 mt-16 gap-12 ">
+        <div className="w-[98%] sm:w-full grid grid-cols-1 md:grid-cols-2 mt-16 gap-12 ">
           <>
             {posts.length === 0 && (
               <span className="text-basetime text-xl font-medium ">
