@@ -1,37 +1,15 @@
+import ReactMarkDown from "react-markdown";
 import { PostContentContainer } from "./styles";
-import ReactMarkdown from "react-markdown";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
-interface PostContentProps {
+interface PostContentData {
   content: string;
 }
 
-export function PostContent({ content }: PostContentProps) {
+export function PostContent({ content }: PostContentData) {
   return (
-    <div className="w-[98%] md:w-full">
+    <div className="flex flex-col gap-2 p-4 mb-24 mt-8 text-xl text-textbase">
       <PostContentContainer>
-        <ReactMarkdown
-          children={content}
-          components={{
-            code({ className, children, ...props }) {
-              const match = /language-(\w+)/.exec(className || "");
-              return match ? (
-                <SyntaxHighlighter
-                  children={String(children).replace(/\n$/, "")}
-                  style={dracula}
-                  language={match[1]}
-                  PreTag="div"
-                  {...props}
-                />
-              ) : (
-                <code className={className} {...props}>
-                  {children}
-                </code>
-              );
-            },
-          }}
-        />
+        <ReactMarkDown children={content} />
       </PostContentContainer>
     </div>
   );
